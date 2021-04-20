@@ -4,15 +4,19 @@ mean_ilsvrc12 = [0.485, 0.456, 0.406]
 std_ilsvrc12 = [0.229, 0.224, 0.225]
 mean_inat19 = [0.454, 0.474, 0.367]
 std_inat19 = [0.237, 0.230, 0.249]
+mean_cifar10 = [0.491, 0.482, 0.446]
+std_cifar10 = [0.246, 0.243, 0.261]
 
 normalize_tfs_ilsvrc12 = transforms.Normalize(mean=mean_ilsvrc12, std=std_ilsvrc12)
 normalize_tfs_inat19 = transforms.Normalize(mean=mean_inat19, std=std_inat19)
+normalize_tfs_cifar10 = transforms.Normalize(mean=mean_cifar10, std=std_cifar10)
 normalize_tfs_dict = {
     "tiered-imagenet-84": normalize_tfs_ilsvrc12,
     "tiered-imagenet-224": normalize_tfs_ilsvrc12,
     "ilsvrc12": normalize_tfs_ilsvrc12,
     "inaturalist19-84": normalize_tfs_inat19,
     "inaturalist19-224": normalize_tfs_inat19,
+    "cifar10-32": normalize_tfs_cifar10,
 }
 
 
