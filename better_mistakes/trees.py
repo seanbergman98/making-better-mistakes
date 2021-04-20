@@ -49,6 +49,8 @@ def load_hierarchy(dataset, data_dir):
         fname = os.path.join(data_dir, "imagenet_tree.pkl")
     elif dataset in ["inaturalist19-84", "inaturalist19-224"]:
         fname = os.path.join(data_dir, "inaturalist19_tree.pkl")
+    elif dataset in ["cifar10-32"]:
+        fname = os.path.join(data_dir, "cifar10_tree.pkl")
     else:
         raise ValueError("Unknown dataset {}".format(dataset))
 
@@ -78,6 +80,8 @@ def load_distances(dataset, dist_type, data_dir):
         dataset = "imagenet"
     elif dataset in ["inaturalist19-224", "inaturalist19-84"]:
         dataset = "inaturalist19"
+    elif dataset in ["cifar10-32"]:
+        dataset = "cifar10"
 
     with lzma.open(os.path.join(data_dir, "{}_{}_distances.pkl.xz".format(dataset, dist_type).replace("-", "_")), "rb") as f:
         return DistanceDict(pickle.load(f))
