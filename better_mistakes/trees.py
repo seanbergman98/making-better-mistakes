@@ -83,7 +83,9 @@ def load_distances(dataset, dist_type, data_dir):
     elif dataset in ["cifar10-32"]:
         dataset = "cifar10"
 
+    print(os.path.join(data_dir, "{}_{}_distances.pkl.xz".format(dataset, dist_type).replace("-", "_")))
     with lzma.open(os.path.join(data_dir, "{}_{}_distances.pkl.xz".format(dataset, dist_type).replace("-", "_")), "rb") as f:
+        print(pickle.load(f))
         return DistanceDict(pickle.load(f))
 
 
