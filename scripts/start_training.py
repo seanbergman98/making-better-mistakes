@@ -72,7 +72,6 @@ def main_worker(gpus_per_node, opts):
     num_batches = len(train_loader)
     opts.epochs = int(round(opts.num_training_steps / num_batches))
 
-    print('Double checking: Our data is ' + opts.data)
     # Load hierarchy and classes ------------------------------------------------------------------------------------------------------------------------------
     distances = load_distances(opts.data, 'ilsvrc', opts.data_dir)
     hierarchy = load_hierarchy(opts.data, opts.data_dir)
@@ -147,7 +146,7 @@ def main_worker(gpus_per_node, opts):
     corrector = yolo2_corrector if opts.loss == "yolo-v2" else lambda x: x
 
     print('Distances are:')
-    print(distances.items())
+    print(distances.distances)
     print('Classes are:')
     print(classes)
     # create the soft labels
