@@ -140,12 +140,16 @@ def main_worker(gpus_per_node, opts):
     elif opts.loss == "cosine-plus-xent":
         loss_function = CosinePlusXentLoss(emb_layer).cuda(opts.gpu)
     else:
-        raise RuntimeError("Unkown loss {}".format(opts.loss))
+        raise RuntimeError("Unknown loss {}".format(opts.loss))
 
     # for yolo, we need to decode the output of the classifier as it outputs the conditional probabilities
     corrector = yolo2_corrector if opts.loss == "yolo-v2" else lambda x: x
 
-    # create the solft labels
+    print('Distances are:')
+    print(distances)
+    print('Classes are:')
+    print(classes)
+    # create the soft labels
     soft_labels = make_all_soft_labels(distances, classes, opts.beta)
 
     # Training/evaluation -------------------------------------------------------------------------------------------------------------------------------------
