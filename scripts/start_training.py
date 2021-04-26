@@ -149,7 +149,7 @@ def main_worker(gpus_per_node, opts):
     soft_labels = make_all_soft_labels(distances, classes, opts.beta)
 
     print('Our model is as follows:')
-    print(model.summary())
+    print(model)
 
     # Training/evaluation -------------------------------------------------------------------------------------------------------------------------------------
 
