@@ -64,7 +64,7 @@ def run(loader, model, loss_function, distances, all_soft_labels, classes, opts,
         for batch_idx, (embeddings, target) in enumerate(loader):
             # Adding some print statments to help me
             print('batch_idx is: {}'.format(batch_idx))
-            print('embeddings has shape: {}'.format(embeddings.size))
+            print('embeddings has shape: {}'.format(embeddings.size()))
             print('targe is {}'.format(target))
 
             this_load_time = time.time() - time_load0
