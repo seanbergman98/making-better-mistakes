@@ -16,7 +16,7 @@ normalize_tfs_dict = {
     "ilsvrc12": normalize_tfs_ilsvrc12,
     "inaturalist19-84": normalize_tfs_inat19,
     "inaturalist19-224": normalize_tfs_inat19,
-    "cifar10-32": normalize_tfs_cifar10,
+    "cifar10-224": normalize_tfs_cifar10,
 }
 
 

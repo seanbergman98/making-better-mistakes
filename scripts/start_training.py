@@ -33,7 +33,7 @@ from better_mistakes.trees import load_hierarchy, get_weighting, load_distances,
 MODEL_NAMES = sorted(name for name in models.__dict__ if name.islower() and not name.startswith("__") and callable(models.__dict__[name]))
 LOSS_NAMES = ["cross-entropy", "soft-labels", "hierarchical-cross-entropy", "cosine-distance", "ranking-loss", "cosine-plus-xent", "yolo-v2"]
 OPTIMIZER_NAMES = ["adagrad", "adam", "adam_amsgrad", "rmsprop", "SGD"]
-DATASET_NAMES = ["tiered-imagenet-84", "inaturalist19-84", "tiered-imagenet-224", "inaturalist19-224", "cifar10-32"]
+DATASET_NAMES = ["tiered-imagenet-84", "inaturalist19-84", "tiered-imagenet-224", "inaturalist19-224", "cifar10-224"]
 
 
 def main_worker(gpus_per_node, opts):
@@ -145,12 +145,11 @@ def main_worker(gpus_per_node, opts):
     # for yolo, we need to decode the output of the classifier as it outputs the conditional probabilities
     corrector = yolo2_corrector if opts.loss == "yolo-v2" else lambda x: x
 
-    print('Distances are:')
-    print(distances.distances)
-    print('Classes are:')
-    print(classes)
     # create the soft labels
     soft_labels = make_all_soft_labels(distances, classes, opts.beta)
+
+    print('This is what our data looks like')
+    print(train_dataset.shape())
 
     # Training/evaluation -------------------------------------------------------------------------------------------------------------------------------------
 
