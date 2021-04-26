@@ -7,7 +7,9 @@ import tensorboardX
 from better_mistakes.model.performance import accuracy
 from better_mistakes.model.labels import make_batch_onehot_labels, make_batch_soft_labels
 
-topK_to_consider = (1, 5, 10, 20, 100)
+# Update the topK_to_consider for CIFAR-10 data
+# topK_to_consider = (1, 5, 10, 20, 100)
+topK_to_consider = (1, 3, 5)
 
 # lists of ids for loggings performance measures
 accuracy_ids = ["accuracy_top/%02d" % i for i in topK_to_consider]
