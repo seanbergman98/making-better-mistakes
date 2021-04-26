@@ -148,9 +148,6 @@ def main_worker(gpus_per_node, opts):
     # create the soft labels
     soft_labels = make_all_soft_labels(distances, classes, opts.beta)
 
-    print('This is what our data looks like')
-    print(train_dataset.shape())
-
     # Training/evaluation -------------------------------------------------------------------------------------------------------------------------------------
 
     requires_grad_to_set = True
